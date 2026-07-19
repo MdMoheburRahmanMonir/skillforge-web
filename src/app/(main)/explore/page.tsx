@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
@@ -26,11 +26,6 @@ export default function ExplorePage() {
   const [minRating, setMinRating] = useState("");
   const [sort, setSort] = useState("newest");
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    const cat = searchParams.get("category");
-    if (cat) setCategory(cat);
-  }, [searchParams]);
 
   const { data: categoriesData } = useQuery({
     queryKey: ["categories"],
@@ -132,7 +127,7 @@ export default function ExplorePage() {
               </select>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
               {isLoading
                 ? Array.from({ length: 6 }).map((_, i) => <CourseCardSkeleton key={i} />)
                 : data?.courses.map((course) => <CourseCard key={course._id} course={course} />)}

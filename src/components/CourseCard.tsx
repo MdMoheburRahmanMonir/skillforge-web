@@ -11,10 +11,10 @@ export default function CourseCard({ course }: CourseCardProps) {
   return (
     <div className="card flex flex-col h-full overflow-hidden group">
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={course.imageUrl}
+        <img
+          src={course.courseImage}
           alt={course.title}
-          fill
+           
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, 25vw"
         />

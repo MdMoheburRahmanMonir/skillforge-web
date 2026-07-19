@@ -27,7 +27,7 @@ export default function BlogDetailPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Blog
         </Link>
         <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
-          <Image src={post.imageUrl} alt={post.title} fill className="object-cover" priority />
+          <Image src={post.courseImage} alt={post.title} fill className="object-cover" priority />
         </div>
         <span className="text-sm font-medium text-primary">{post.category}</span>
         <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-4">{post.title}</h1>

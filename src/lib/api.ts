@@ -35,14 +35,14 @@ export const api = {
   courses: {
     list: (params: Record<string, string>) => {
       const qs = new URLSearchParams(params).toString();
-      return request<PaginatedCourses>(`/courses?${qs}`);
+      return request<PaginatedCourses>(`/api/v1/courses?${qs}`);
     },
     get: (id: string) => request<{ success: boolean; data: Course }>(`/api/v1/courses/${id}`),
     create: (body: Partial<Course>) => request<{ course: Course }>("/api/v1/courses", { method: "POST", body: JSON.stringify(body) }),
     delete: (id: string) => request<{ message: string; success: boolean }>(`/api/v1/courses/${id}`, { method: "DELETE" }),
     my: (id: string) => request<{ success: boolean; data: Course[] }>(`/api/v1/courses/my/${id}`),
-    categories: () => request<{ categories: string[] }>("/courses/categories"),
-    stats: () => request<StatsData>("/courses/stats"),
+    categories: () => request<{ categories: string[] }>("/api/v1/courses/categories"),
+    stats: () => request<StatsData>("/api/v1/courses/stats"),
   },
   ai: {
     chat: (message: string, conversationId?: string) =>
@@ -63,8 +63,8 @@ export const api = {
       }),
   },
   blogs: {
-    list: () => request<{ posts: BlogPost[] }>("/blogs"),
-    get: (slug: string) => request<{ post: BlogPost }>(`/blogs/${slug}`),
+    list: () => request<{ posts: BlogPost[] }>("/api/v1/blogs"),
+    get: (slug: string) => request<{ post: BlogPost }>(`/api/v1/blogs/${slug}`),
     contact: (body: { name: string; email: string; subject: string; message: string; userId: string; userName: string; userEmail: string }) =>
       request<{ message: string, success: boolean }>("/api/v1/blogs/contact", { method: "POST", body: JSON.stringify(body) }),
   },

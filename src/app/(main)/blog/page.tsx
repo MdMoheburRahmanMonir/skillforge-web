@@ -29,7 +29,7 @@ export default function BlogPage() {
             {data?.posts.map((post) => (
               <Link key={post._id} href={`/blog/${post.slug}`} className="card overflow-hidden group">
                 <div className="relative h-48">
-                  <Image src={post.imageUrl} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={post.courseImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
                   <span className="text-xs font-medium text-primary">{post.category}</span>
