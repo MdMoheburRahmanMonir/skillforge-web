@@ -12,6 +12,7 @@ console.log('cookies equal', getToken());
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const { data: tokenData } = await authClient.token();
   const token = tokenData?.token;
+  console.log('the token is', token);
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(options.headers as Record<string, string>),
@@ -64,8 +65,8 @@ export const api = {
   blogs: {
     list: () => request<{ posts: BlogPost[] }>("/blogs"),
     get: (slug: string) => request<{ post: BlogPost }>(`/blogs/${slug}`),
-    contact: (body: { name: string; email: string; subject: string; message: string }) =>
-      request<{ message: string }>("/blogs/contact", { method: "POST", body: JSON.stringify(body) }),
+    contact: (body: { name: string; email: string; subject: string; message: string; userId: string; userName: string; userEmail: string }) =>
+      request<{ message: string, success: boolean }>("/api/v1/blogs/contact", { method: "POST", body: JSON.stringify(body) }),
   },
 };
 
@@ -99,7 +100,8 @@ export async function streamChat(
   onChunk: (text: string) => void,
   onDone: (conversationId: string) => void
 ) {
-  const token = getToken();
+  const { data: tokenData } = await authClient.token();
+  const token = tokenData?.token;
   const res = await fetch(`${API_URL}/ai/chat/stream`, {
     method: "POST",
     headers: {

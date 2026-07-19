@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-900 text-neutral-200">
       <div className="container-main section-padding pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div>
             <div className="flex items-center gap-2 font-bold text-xl text-white mb-4">
               <GraduationCap className="w-7 h-7 text-secondary" />
@@ -37,9 +37,9 @@ export default function Footer() {
               AI-powered learning platform helping professionals master in-demand skills with personalized recommendations and intelligent tutoring.
             </p>
             <div className="flex gap-3">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><IoLogoGithub className="w-5 h-5" /></a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><BsTwitterX className="w-5 h-5" /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><IoLogoLinkedin className="w-5 h-5" /></a>
+              <a href="https://github.com/MdMoheburRahmanMonir" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><IoLogoGithub className="w-5 h-5" /></a>
+              <a href="https://x.com/MohiburMd2288" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><BsTwitterX className="w-5 h-5" /></a>
+              <a href="https://www.linkedin.com/in/md-mohebur-rahman-monir" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><IoLogoLinkedin className="w-5 h-5" /></a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-neutral-800 rounded-lg hover:bg-primary transition-colors"><FaYoutube className="w-5 h-5" /></a>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4">Contact Us</h4>
             <ul className="space-y-3 text-sm text-neutral-400">
               <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-secondary" /> support@skillforge.ai</li>
-              <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-secondary" /> +1 (555) 123-4567</li>
-              <li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-secondary mt-0.5" /> 123 Innovation Drive, San Francisco, CA 94105</li>
+              <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-secondary" /> +88 01887 344542</li>
+              <li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-secondary mt-0.5" /> Sylhet, Bangladesh</li>
             </ul>
           </div>
         </div>

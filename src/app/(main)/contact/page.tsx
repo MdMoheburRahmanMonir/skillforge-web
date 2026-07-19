@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { api } from "@/lib/api";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const { data: session } = authClient.useSession();
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", userId: session?.user?.id || "" , userName: session?.user?.name || "", userEmail: session?.user?.email || "" });
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -15,7 +18,11 @@ export default function ContactPage() {
     try {
       const result = await api.blogs.contact(form);
       setStatus(result.message);
-      setForm({ name: "", email: "", subject: "", message: "" });
+      if( result.success){
+        toast.success("Message sent successfully!");
+        setForm({ name: "", email: "", subject: "", message: "", userId: session?.user?.id || "" , userName: session?.user?.name || "", userEmail: session?.user?.email || "" });
+        setStatus('Message sent successfully!');
+      } 
     } catch (err) {
       setStatus(err instanceof Error ? err.message : "Failed to send message");
     } finally {
@@ -35,8 +42,8 @@ export default function ContactPage() {
           <div className="space-y-6">
             {[
               { icon: Mail, label: "Email", value: "support@skillforge.ai" },
-              { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
-              { icon: MapPin, label: "Address", value: "123 Innovation Drive, San Francisco, CA 94105" },
+              { icon: Phone, label: "Phone", value: "+88 01887 344542" },
+              { icon: MapPin, label: "Address", value: "Sylhet, Bangladesh" },
             ].map((item) => (
               <div key={item.label} className="card p-5 flex items-start gap-4">
                 <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
@@ -56,11 +63,11 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Name *</label>
-                  <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input-field" />
+                  <input required value={session?.user?.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input-field" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Email *</label>
-                  <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="input-field" />
+                  <input required type="email" value={session?.user?.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="input-field" />
                 </div>
               </div>
               <div>

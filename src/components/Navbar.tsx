@@ -37,6 +37,7 @@ export default function Navbar() {
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
 
+
   const [open, setOpen] = useState(false); // Mobile menu state
   const [dropdownOpen, setDropdownOpen] = useState(false); // Desktop dropdown state
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -54,7 +55,7 @@ export default function Navbar() {
       },
     });
   };
- 
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {

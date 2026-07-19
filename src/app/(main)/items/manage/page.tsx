@@ -73,8 +73,6 @@ function ManageCourses() {
                       <td className="p-4 text-right">
                         <div className="flex items-center justify-end gap-2">
                           <Link href={`/courses/${course._id}`} className="p-2 text-primary hover:bg-primary/10 rounded-lg"><Eye className="w-4 h-4" /></Link>
-                          {/* <button onClick={() => { if (confirm("Delete this course?")) deleteMutation.mutate(course._id); }}
-                            className="p-2 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button> */}
                           <AlertDialog>
                             <Button variant="secondary" className="p-2 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4 " /></Button>
                             <AlertDialog.Backdrop>
@@ -83,11 +81,11 @@ function ManageCourses() {
                                   <AlertDialog.CloseTrigger />
                                   <AlertDialog.Header>
                                     <AlertDialog.Icon status="danger" />
-                                    <AlertDialog.Heading>Delete project permanently?</AlertDialog.Heading>
+                                    <AlertDialog.Heading>Delete course permanently?</AlertDialog.Heading>
                                   </AlertDialog.Header>
                                   <AlertDialog.Body>
                                     <p>
-                                      This will permanently delete <strong>My Awesome Project</strong> and all of its
+                                      This will permanently delete <strong>{course.title}</strong> and all of its
                                       data. This action cannot be undone.
                                     </p>
                                   </AlertDialog.Body>
@@ -96,7 +94,7 @@ function ManageCourses() {
                                       Cancel
                                     </Button>
                                     <Button onClick={() => { deleteMutation.mutate(course._id); }} slot="close" variant="danger">
-                                      Delete Project
+                                      Delete Course
                                     </Button>
                                   </AlertDialog.Footer>
                                 </AlertDialog.Dialog>
@@ -126,10 +124,6 @@ function ManageCourses() {
                   </div>
                   <div className="flex gap-2">
                     <Link href={`/courses/${course._id}`} className="btn-outline rounded-full flex-1 text-sm "><Eye className="w-4 h-4" /> View</Link>
-                    {/* <button onClick={() => { if (confirm("Delete?")) deleteMutation.mutate(course._id); }}
-                      className="flex-1 py-2 text-sm text-red-500 border border-red-200 rounded-xl hover:bg-red-50 flex items-center justify-center gap-1">
-                      <Trash2 className="w-4 h-4" /> Delete
-                    </button> */}
                     <AlertDialog>
                       <Button variant="secondary" className="  text-red-500 flex-1 text-sm py-4"><Trash2 className="w-4 h-4 text-red-600" /> Delete</Button>
                       <AlertDialog.Backdrop>
@@ -138,11 +132,11 @@ function ManageCourses() {
                             <AlertDialog.CloseTrigger />
                             <AlertDialog.Header>
                               <AlertDialog.Icon status="danger" />
-                              <AlertDialog.Heading>Delete project permanently?</AlertDialog.Heading>
+                              <AlertDialog.Heading>Delete course permanently?</AlertDialog.Heading>
                             </AlertDialog.Header>
                             <AlertDialog.Body>
                               <p>
-                                This will permanently delete <strong>My Awesome Project</strong> and all of its
+                                This will permanently delete <strong>{course.title}</strong> and all of its
                                 data. This action cannot be undone.
                               </p>
                             </AlertDialog.Body>
@@ -151,7 +145,7 @@ function ManageCourses() {
                                 Cancel
                               </Button>
                               <Button onClick={() => { deleteMutation.mutate(course._id); }} slot="close" variant="danger">
-                                Delete Project
+                                Delete Course
                               </Button>
                             </AlertDialog.Footer>
                           </AlertDialog.Dialog>

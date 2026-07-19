@@ -145,14 +145,7 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
-
-            {/* Forgot Password Link (Right aligned like the reference image) */}
-            <div className="flex justify-end pt-1">
-              <Link href="#" className="text-xs font-bold text-slate-700 hover:text-blue-600 hover:underline transition-colors underline-offset-2">
-                Forgot password?
-              </Link>
-            </div>
-
+ 
             {/* Main Primary Action Button (Matches the clean slate/dark tone from image) */}
             <button
               type="submit"
