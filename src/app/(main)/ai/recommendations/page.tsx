@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import CourseCard, { CourseCardSkeleton } from "@/components/CourseCard";
 import { api } from "@/lib/api";
-import { useAuth } from "@/context/AuthContext";
 import { Sparkles, RefreshCw } from "lucide-react";
 
 const interestOptions = [
@@ -14,8 +13,7 @@ const interestOptions = [
 ];
 
 function Recommendations() {
-  const { user } = useAuth();
-  const [selectedInterests, setSelectedInterests] = useState<string[]>(user?.interests || []);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [category, setCategory] = useState("all");
   const [level, setLevel] = useState("all");
   const [budget, setBudget] = useState("");

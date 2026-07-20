@@ -57,7 +57,7 @@ export const api = {
       return request<{ recommendations: Course[]; aiInsight: string }>(`/ai/recommendations?${qs}`);
     },
     classify: (title: string, description: string) =>
-      request<{ category: string; level: string; tags: string[] }>("/ai/classify", {
+      request<{ category: string; level: string; tags: string[] }>("/api/v1/ai/classify", {
         method: "POST",
         body: JSON.stringify({ title, description }),
       }),

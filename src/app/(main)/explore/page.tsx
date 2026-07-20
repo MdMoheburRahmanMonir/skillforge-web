@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
@@ -16,7 +16,7 @@ const sortOptions = [
   { value: "title", label: "A-Z" },
 ];
 
-export default function ExplorePage() {
+function ExploreContent() {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(searchParams.get("category") || "all");
@@ -127,7 +127,7 @@ export default function ExplorePage() {
               </select>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {isLoading
                 ? Array.from({ length: 6 }).map((_, i) => <CourseCardSkeleton key={i} />)
                 : data?.courses.map((course) => <CourseCard key={course._id} course={course} />)}
@@ -154,5 +154,21 @@ export default function ExplorePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ExplorePage() {
+  return (
+    <Suspense fallback={
+      <div className="section-padding">
+        <div className="container-main">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => <CourseCardSkeleton key={i} />)}
+          </div>
+        </div>
+      </div>
+    }>
+      <ExploreContent />
+    </Suspense>
   );
 }

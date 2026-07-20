@@ -20,7 +20,7 @@ export default function FeaturesSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-2">Powered by Agentic AI</h2>
           <p className="text-neutral-600 mt-4 max-w-2xl mx-auto">Experience the future of learning with AI that understands, recommends, and guides your educational journey.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
             <div key={f.title} className="card p-6 hover:border-primary/30 group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
