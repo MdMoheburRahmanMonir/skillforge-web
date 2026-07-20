@@ -21,15 +21,15 @@ export default function BlogPage() {
         </div>
 
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-80 skeleton rounded-2xl" />)}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {Array.from({ length: 4 }).map((_, i) => <div key={i} className="h-80 skeleton rounded-2xl" />)}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {data?.posts.map((post) => (
               <Link key={post._id} href={`/blog/${post.slug}`} className="card overflow-hidden group">
                 <div className="relative h-48">
-                  <Image src={post.courseImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={post.courseImage} alt={post.title} fill className="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
                   <span className="text-xs font-medium text-primary">{post.category}</span>

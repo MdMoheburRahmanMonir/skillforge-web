@@ -15,7 +15,7 @@ export default function CourseCard({ course }: CourseCardProps) {
           src={course.courseImage}
           alt={course.title}
            
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 h-full w-full rounded-2xl transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, 25vw"
         />
         <span className="absolute top-3 left-3 px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">
